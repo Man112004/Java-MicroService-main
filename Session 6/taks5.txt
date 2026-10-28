@@ -1,0 +1,62 @@
+1
+create ConfigFileHealthIndicator.java
+
+package com.example.demo;
+
+import java.io.File;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ConfigFileHealthIndicator implements HealthIndicator {
+
+    @Override
+    public Health health() {
+        File file = new File("config.txt");
+
+        if (file.exists()) {
+            return Health.up()
+                    .withDetail("configFile", "File exists")
+                    .build();
+        } else {
+            return Health.down()
+                    .withDetail("configFile", "File not found")
+                    .build();
+        }
+    }
+}
+
+2 Create config.txt
+
+Create a file named config.txt in your project's root directory.
+
+3 Configure application.properties
+Add
+management.endpoints.web.exposure.include=health
+management.endpoint.health.show-details=always
+
+4 Run the application
+
+5 Test the health endpoint
+
+http://localhost:8080/actuator/health
+
+output
+{
+  "status": "UP",
+  "components": {
+    "configFileHealthIndicator": {
+      "status": "UP",
+      "details": {
+        "configFile": "File exists"
+      }
+    }
+  }
+}
+
+If the file does not exist: The custom indicator reports DOWN.
+
+Result:
+
+The custom health indicator checks whether config.txt exists. It returns UP if the file exists and DOWN if the file is missing.

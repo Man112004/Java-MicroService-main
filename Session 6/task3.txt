@@ -1,0 +1,49 @@
+1
+add pom.xml
+
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+</dependency>
+
+2
+add application.properties
+
+management.endpoints.web.exposure.include=health,metrics,prometheus
+
+3 
+run the application
+
+4
+test the Prometheus endpoint
+
+http://localhost:8080/actuator/prometheus
+
+jvm_memory_used_bytes
+http_server_requests_seconds_count
+
+5
+Configure Prometheus
+add prometheus.yml
+
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'spring-boot-app'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:8080']
+
+6
+Verify Prometheus
+
+http://localhost:9090
+
+enter:
+
+jvm_memory_used_bytes
+
+Click Execute.
+
+You should see JVM memory metrics if Prometheus is successfully scraping your application.

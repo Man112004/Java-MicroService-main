@@ -1,0 +1,16 @@
+spring.application.name=EurekaServer
+server.port=8761
+
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+
+spring.application.name=FoodieService
+server.port=8082
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+
+
+spring.application.name=MovieService
+server.port=8083
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/

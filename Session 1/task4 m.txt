@@ -1,0 +1,1 @@
+In a monolithic app, updating the payment feature may require deploying the entire application. This can cause downtime and affect other features like login, product listing, and orders. In a microservices app like Flipkart, the payment service can be updated independently. This reduces downtime and the risk of affecting other features.

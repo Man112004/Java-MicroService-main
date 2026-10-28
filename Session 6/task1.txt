@@ -1,0 +1,22 @@
+1 
+add pom.xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+2
+add application.properties
+
+management.endpoints.web.exposure.include=health
+
+3 
+run the application
+
+4
+http://localhost:8080/actuator/health
+
+output
+{
+  "status": "UP"
+}

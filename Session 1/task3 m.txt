@@ -1,0 +1,15 @@
+1. Independent Deployment:
+We can update the payment service without updating the whole application.
+Example: BookMyShow updates its payment feature separately.
+
+2. Easy Scaling:
+We can increase resources for a service when more users access it.
+Example: BookMyShow handles more users when a popular movie is released.
+
+3. Fault Isolation:
+If one service fails, other services can continue working.
+Example: If the notification service fails, users can still book movie tickets.
+
+4. Easy Maintenance:
+Each service can be developed and maintained separately.
+Example: Developers can update the login service without changing the ticket booking service.

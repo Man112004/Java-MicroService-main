@@ -1,0 +1,33 @@
+1
+add application.properties
+
+management.endpoints.web.exposure.include=health,metrics
+
+2 
+run the application
+
+3 
+Access the metrics endpoint
+
+http://localhost:8080/actuator/metrics
+
+4
+check jvm memory
+
+http://localhost:8080/actuator/metrics/jvm.memory.used
+
+output
+{
+  "name": "jvm.memory.used",
+  "measurements": [
+    {
+      "statistic": "VALUE",
+      "value": 12345678
+    }
+  ]
+}
+
+5 Check HTTP requests
+
+http://localhost:8080/actuator/metrics/http.server.requests
+
